@@ -23,6 +23,9 @@ export class UserActivity extends jspb.Message {
     setWindowListList(value: Array<ApplicationWindow>): void;
     addWindowList(value?: ApplicationWindow, index?: number): ApplicationWindow;
 
+    getUserState(): UserActivity.UserState;
+    setUserState(value: UserActivity.UserState): void;
+
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): UserActivity.AsObject;
@@ -40,7 +43,14 @@ export namespace UserActivity {
         endTimestamp: number,
         keyboardInput?: KeyboardInput.AsObject,
         windowListList: Array<ApplicationWindow.AsObject>,
+        userState: UserActivity.UserState,
     }
+
+    export enum UserState {
+    WORKING = 0,
+    AWAY = 1,
+    }
+
 }
 
 export class KeyboardInput extends jspb.Message { 
