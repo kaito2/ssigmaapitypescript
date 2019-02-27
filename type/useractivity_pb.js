@@ -117,11 +117,11 @@ proto.ssigmaapi.type.UserActivity.deserializeBinaryFromReader = function(msg, re
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {number} */ (reader.readInt64());
+      var value = /** @type {number} */ (reader.readInt32());
       msg.setStartTimestamp(value);
       break;
     case 2:
-      var value = /** @type {number} */ (reader.readInt64());
+      var value = /** @type {number} */ (reader.readInt32());
       msg.setEndTimestamp(value);
       break;
     case 3:
@@ -144,7 +144,7 @@ proto.ssigmaapi.type.UserActivity.deserializeBinaryFromReader = function(msg, re
       msg.setMouseInput(value);
       break;
     case 7:
-      var value = /** @type {number} */ (reader.readInt64());
+      var value = /** @type {number} */ (reader.readInt32());
       msg.setSwitchApplicationCount(value);
       break;
     default:
@@ -178,14 +178,14 @@ proto.ssigmaapi.type.UserActivity.serializeBinaryToWriter = function(message, wr
   var f = undefined;
   f = message.getStartTimestamp();
   if (f !== 0) {
-    writer.writeInt64(
+    writer.writeInt32(
       1,
       f
     );
   }
   f = message.getEndTimestamp();
   if (f !== 0) {
-    writer.writeInt64(
+    writer.writeInt32(
       2,
       f
     );
@@ -223,7 +223,7 @@ proto.ssigmaapi.type.UserActivity.serializeBinaryToWriter = function(message, wr
   }
   f = message.getSwitchApplicationCount();
   if (f !== 0) {
-    writer.writeInt64(
+    writer.writeInt32(
       7,
       f
     );
@@ -240,7 +240,7 @@ proto.ssigmaapi.type.UserActivity.UserState = {
 };
 
 /**
- * optional int64 start_timestamp = 1;
+ * optional int32 start_timestamp = 1;
  * @return {number}
  */
 proto.ssigmaapi.type.UserActivity.prototype.getStartTimestamp = function() {
@@ -255,7 +255,7 @@ proto.ssigmaapi.type.UserActivity.prototype.setStartTimestamp = function(value) 
 
 
 /**
- * optional int64 end_timestamp = 2;
+ * optional int32 end_timestamp = 2;
  * @return {number}
  */
 proto.ssigmaapi.type.UserActivity.prototype.getEndTimestamp = function() {
@@ -376,7 +376,7 @@ proto.ssigmaapi.type.UserActivity.prototype.hasMouseInput = function() {
 
 
 /**
- * optional int64 switch_application_count = 7;
+ * optional int32 switch_application_count = 7;
  * @return {number}
  */
 proto.ssigmaapi.type.UserActivity.prototype.getSwitchApplicationCount = function() {
@@ -475,7 +475,7 @@ proto.ssigmaapi.type.KeyboardInput.deserializeBinaryFromReader = function(msg, r
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {number} */ (reader.readInt64());
+      var value = /** @type {number} */ (reader.readInt32());
       msg.setStrokeCount(value);
       break;
     default:
@@ -509,7 +509,7 @@ proto.ssigmaapi.type.KeyboardInput.serializeBinaryToWriter = function(message, w
   var f = undefined;
   f = message.getStrokeCount();
   if (f !== 0) {
-    writer.writeInt64(
+    writer.writeInt32(
       1,
       f
     );
@@ -518,7 +518,7 @@ proto.ssigmaapi.type.KeyboardInput.serializeBinaryToWriter = function(message, w
 
 
 /**
- * optional int64 stroke_count = 1;
+ * optional int32 stroke_count = 1;
  * @return {number}
  */
 proto.ssigmaapi.type.KeyboardInput.prototype.getStrokeCount = function() {
@@ -620,19 +620,19 @@ proto.ssigmaapi.type.MouseInput.deserializeBinaryFromReader = function(msg, read
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {number} */ (reader.readInt64());
+      var value = /** @type {number} */ (reader.readInt32());
       msg.setClickCount(value);
       break;
     case 2:
-      var value = /** @type {number} */ (reader.readInt64());
+      var value = /** @type {number} */ (reader.readInt32());
       msg.setLeftClickCount(value);
       break;
     case 3:
-      var value = /** @type {number} */ (reader.readInt64());
+      var value = /** @type {number} */ (reader.readInt32());
       msg.setMiddleClickCount(value);
       break;
     case 4:
-      var value = /** @type {number} */ (reader.readInt64());
+      var value = /** @type {number} */ (reader.readInt32());
       msg.setRightClickCount(value);
       break;
     default:
@@ -666,28 +666,28 @@ proto.ssigmaapi.type.MouseInput.serializeBinaryToWriter = function(message, writ
   var f = undefined;
   f = message.getClickCount();
   if (f !== 0) {
-    writer.writeInt64(
+    writer.writeInt32(
       1,
       f
     );
   }
   f = message.getLeftClickCount();
   if (f !== 0) {
-    writer.writeInt64(
+    writer.writeInt32(
       2,
       f
     );
   }
   f = message.getMiddleClickCount();
   if (f !== 0) {
-    writer.writeInt64(
+    writer.writeInt32(
       3,
       f
     );
   }
   f = message.getRightClickCount();
   if (f !== 0) {
-    writer.writeInt64(
+    writer.writeInt32(
       4,
       f
     );
@@ -696,7 +696,7 @@ proto.ssigmaapi.type.MouseInput.serializeBinaryToWriter = function(message, writ
 
 
 /**
- * optional int64 click_count = 1;
+ * optional int32 click_count = 1;
  * @return {number}
  */
 proto.ssigmaapi.type.MouseInput.prototype.getClickCount = function() {
@@ -711,7 +711,7 @@ proto.ssigmaapi.type.MouseInput.prototype.setClickCount = function(value) {
 
 
 /**
- * optional int64 left_click_count = 2;
+ * optional int32 left_click_count = 2;
  * @return {number}
  */
 proto.ssigmaapi.type.MouseInput.prototype.getLeftClickCount = function() {
@@ -726,7 +726,7 @@ proto.ssigmaapi.type.MouseInput.prototype.setLeftClickCount = function(value) {
 
 
 /**
- * optional int64 middle_click_count = 3;
+ * optional int32 middle_click_count = 3;
  * @return {number}
  */
 proto.ssigmaapi.type.MouseInput.prototype.getMiddleClickCount = function() {
@@ -741,7 +741,7 @@ proto.ssigmaapi.type.MouseInput.prototype.setMiddleClickCount = function(value) 
 
 
 /**
- * optional int64 right_click_count = 4;
+ * optional int32 right_click_count = 4;
  * @return {number}
  */
 proto.ssigmaapi.type.MouseInput.prototype.getRightClickCount = function() {
@@ -841,11 +841,11 @@ proto.ssigmaapi.type.Point.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {number} */ (reader.readInt64());
+      var value = /** @type {number} */ (reader.readInt32());
       msg.setX(value);
       break;
     case 2:
-      var value = /** @type {number} */ (reader.readInt64());
+      var value = /** @type {number} */ (reader.readInt32());
       msg.setY(value);
       break;
     default:
@@ -879,14 +879,14 @@ proto.ssigmaapi.type.Point.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getX();
   if (f !== 0) {
-    writer.writeInt64(
+    writer.writeInt32(
       1,
       f
     );
   }
   f = message.getY();
   if (f !== 0) {
-    writer.writeInt64(
+    writer.writeInt32(
       2,
       f
     );
@@ -895,7 +895,7 @@ proto.ssigmaapi.type.Point.serializeBinaryToWriter = function(message, writer) {
 
 
 /**
- * optional int64 x = 1;
+ * optional int32 x = 1;
  * @return {number}
  */
 proto.ssigmaapi.type.Point.prototype.getX = function() {
@@ -910,7 +910,7 @@ proto.ssigmaapi.type.Point.prototype.setX = function(value) {
 
 
 /**
- * optional int64 y = 2;
+ * optional int32 y = 2;
  * @return {number}
  */
 proto.ssigmaapi.type.Point.prototype.getY = function() {
@@ -1023,11 +1023,11 @@ proto.ssigmaapi.type.ApplicationWindow.deserializeBinaryFromReader = function(ms
       msg.setLefttop(value);
       break;
     case 2:
-      var value = /** @type {number} */ (reader.readInt64());
+      var value = /** @type {number} */ (reader.readInt32());
       msg.setHeight(value);
       break;
     case 3:
-      var value = /** @type {number} */ (reader.readInt64());
+      var value = /** @type {number} */ (reader.readInt32());
       msg.setWidth(value);
       break;
     case 4:
@@ -1055,7 +1055,7 @@ proto.ssigmaapi.type.ApplicationWindow.deserializeBinaryFromReader = function(ms
       msg.setWindowState(value);
       break;
     case 10:
-      var value = /** @type {number} */ (reader.readInt64());
+      var value = /** @type {number} */ (reader.readInt32());
       msg.setTimestamp(value);
       break;
     default:
@@ -1097,14 +1097,14 @@ proto.ssigmaapi.type.ApplicationWindow.serializeBinaryToWriter = function(messag
   }
   f = message.getHeight();
   if (f !== 0) {
-    writer.writeInt64(
+    writer.writeInt32(
       2,
       f
     );
   }
   f = message.getWidth();
   if (f !== 0) {
-    writer.writeInt64(
+    writer.writeInt32(
       3,
       f
     );
@@ -1153,7 +1153,7 @@ proto.ssigmaapi.type.ApplicationWindow.serializeBinaryToWriter = function(messag
   }
   f = message.getTimestamp();
   if (f !== 0) {
-    writer.writeInt64(
+    writer.writeInt32(
       10,
       f
     );
@@ -1201,7 +1201,7 @@ proto.ssigmaapi.type.ApplicationWindow.prototype.hasLefttop = function() {
 
 
 /**
- * optional int64 height = 2;
+ * optional int32 height = 2;
  * @return {number}
  */
 proto.ssigmaapi.type.ApplicationWindow.prototype.getHeight = function() {
@@ -1216,7 +1216,7 @@ proto.ssigmaapi.type.ApplicationWindow.prototype.setHeight = function(value) {
 
 
 /**
- * optional int64 width = 3;
+ * optional int32 width = 3;
  * @return {number}
  */
 proto.ssigmaapi.type.ApplicationWindow.prototype.getWidth = function() {
@@ -1323,7 +1323,7 @@ proto.ssigmaapi.type.ApplicationWindow.prototype.setWindowState = function(value
 
 
 /**
- * optional int64 timestamp = 10;
+ * optional int32 timestamp = 10;
  * @return {number}
  */
 proto.ssigmaapi.type.ApplicationWindow.prototype.getTimestamp = function() {
