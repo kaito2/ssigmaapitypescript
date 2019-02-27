@@ -27,6 +27,12 @@ export class UserActivity extends jspb.Message {
     setUserState(value: UserActivity.UserState): void;
 
 
+    hasMouseInput(): boolean;
+    clearMouseInput(): void;
+    getMouseInput(): MouseInput | undefined;
+    setMouseInput(value?: MouseInput): void;
+
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): UserActivity.AsObject;
     static toObject(includeInstance: boolean, msg: UserActivity): UserActivity.AsObject;
@@ -44,6 +50,7 @@ export namespace UserActivity {
         keyboardInput?: KeyboardInput.AsObject,
         windowListList: Array<ApplicationWindow.AsObject>,
         userState: UserActivity.UserState,
+        mouseInput?: MouseInput.AsObject,
     }
 
     export enum UserState {
@@ -71,6 +78,35 @@ export class KeyboardInput extends jspb.Message {
 export namespace KeyboardInput {
     export type AsObject = {
         strokeCount: number,
+    }
+}
+
+export class MouseInput extends jspb.Message { 
+    getLeftClickCount(): number;
+    setLeftClickCount(value: number): void;
+
+    getMiddleClickCount(): number;
+    setMiddleClickCount(value: number): void;
+
+    getRightClickCount(): number;
+    setRightClickCount(value: number): void;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): MouseInput.AsObject;
+    static toObject(includeInstance: boolean, msg: MouseInput): MouseInput.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: MouseInput, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): MouseInput;
+    static deserializeBinaryFromReader(message: MouseInput, reader: jspb.BinaryReader): MouseInput;
+}
+
+export namespace MouseInput {
+    export type AsObject = {
+        leftClickCount: number,
+        middleClickCount: number,
+        rightClickCount: number,
     }
 }
 
