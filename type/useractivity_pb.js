@@ -78,7 +78,8 @@ proto.ssigmaapi.type.UserActivity.toObject = function(includeInstance, msg) {
     windowListList: jspb.Message.toObjectList(msg.getWindowListList(),
     proto.ssigmaapi.type.ApplicationWindow.toObject, includeInstance),
     userState: jspb.Message.getFieldWithDefault(msg, 5, 0),
-    mouseInput: (f = msg.getMouseInput()) && proto.ssigmaapi.type.MouseInput.toObject(includeInstance, f)
+    mouseInput: (f = msg.getMouseInput()) && proto.ssigmaapi.type.MouseInput.toObject(includeInstance, f),
+    switchApplicationCount: jspb.Message.getFieldWithDefault(msg, 7, 0)
   };
 
   if (includeInstance) {
@@ -141,6 +142,10 @@ proto.ssigmaapi.type.UserActivity.deserializeBinaryFromReader = function(msg, re
       var value = new proto.ssigmaapi.type.MouseInput;
       reader.readMessage(value,proto.ssigmaapi.type.MouseInput.deserializeBinaryFromReader);
       msg.setMouseInput(value);
+      break;
+    case 7:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setSwitchApplicationCount(value);
       break;
     default:
       reader.skipField();
@@ -214,6 +219,13 @@ proto.ssigmaapi.type.UserActivity.serializeBinaryToWriter = function(message, wr
       6,
       f,
       proto.ssigmaapi.type.MouseInput.serializeBinaryToWriter
+    );
+  }
+  f = message.getSwitchApplicationCount();
+  if (f !== 0) {
+    writer.writeInt64(
+      7,
+      f
     );
   }
 };
@@ -360,6 +372,21 @@ proto.ssigmaapi.type.UserActivity.prototype.clearMouseInput = function() {
  */
 proto.ssigmaapi.type.UserActivity.prototype.hasMouseInput = function() {
   return jspb.Message.getField(this, 6) != null;
+};
+
+
+/**
+ * optional int64 switch_application_count = 7;
+ * @return {number}
+ */
+proto.ssigmaapi.type.UserActivity.prototype.getSwitchApplicationCount = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 7, 0));
+};
+
+
+/** @param {number} value */
+proto.ssigmaapi.type.UserActivity.prototype.setSwitchApplicationCount = function(value) {
+  jspb.Message.setField(this, 7, value);
 };
 
 
@@ -552,9 +579,10 @@ proto.ssigmaapi.type.MouseInput.prototype.toObject = function(opt_includeInstanc
  */
 proto.ssigmaapi.type.MouseInput.toObject = function(includeInstance, msg) {
   var f, obj = {
-    leftClickCount: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    middleClickCount: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    rightClickCount: jspb.Message.getFieldWithDefault(msg, 3, 0)
+    clickCount: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    leftClickCount: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    middleClickCount: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    rightClickCount: jspb.Message.getFieldWithDefault(msg, 4, 0)
   };
 
   if (includeInstance) {
@@ -593,13 +621,17 @@ proto.ssigmaapi.type.MouseInput.deserializeBinaryFromReader = function(msg, read
     switch (field) {
     case 1:
       var value = /** @type {number} */ (reader.readInt64());
-      msg.setLeftClickCount(value);
+      msg.setClickCount(value);
       break;
     case 2:
       var value = /** @type {number} */ (reader.readInt64());
-      msg.setMiddleClickCount(value);
+      msg.setLeftClickCount(value);
       break;
     case 3:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setMiddleClickCount(value);
+      break;
+    case 4:
       var value = /** @type {number} */ (reader.readInt64());
       msg.setRightClickCount(value);
       break;
@@ -632,24 +664,31 @@ proto.ssigmaapi.type.MouseInput.prototype.serializeBinary = function() {
  */
 proto.ssigmaapi.type.MouseInput.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getLeftClickCount();
+  f = message.getClickCount();
   if (f !== 0) {
     writer.writeInt64(
       1,
       f
     );
   }
-  f = message.getMiddleClickCount();
+  f = message.getLeftClickCount();
   if (f !== 0) {
     writer.writeInt64(
       2,
       f
     );
   }
-  f = message.getRightClickCount();
+  f = message.getMiddleClickCount();
   if (f !== 0) {
     writer.writeInt64(
       3,
+      f
+    );
+  }
+  f = message.getRightClickCount();
+  if (f !== 0) {
+    writer.writeInt64(
+      4,
       f
     );
   }
@@ -657,47 +696,62 @@ proto.ssigmaapi.type.MouseInput.serializeBinaryToWriter = function(message, writ
 
 
 /**
- * optional int64 left_click_count = 1;
+ * optional int64 click_count = 1;
  * @return {number}
  */
-proto.ssigmaapi.type.MouseInput.prototype.getLeftClickCount = function() {
+proto.ssigmaapi.type.MouseInput.prototype.getClickCount = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
 
 /** @param {number} value */
-proto.ssigmaapi.type.MouseInput.prototype.setLeftClickCount = function(value) {
+proto.ssigmaapi.type.MouseInput.prototype.setClickCount = function(value) {
   jspb.Message.setField(this, 1, value);
 };
 
 
 /**
- * optional int64 middle_click_count = 2;
+ * optional int64 left_click_count = 2;
  * @return {number}
  */
-proto.ssigmaapi.type.MouseInput.prototype.getMiddleClickCount = function() {
+proto.ssigmaapi.type.MouseInput.prototype.getLeftClickCount = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
 };
 
 
 /** @param {number} value */
-proto.ssigmaapi.type.MouseInput.prototype.setMiddleClickCount = function(value) {
+proto.ssigmaapi.type.MouseInput.prototype.setLeftClickCount = function(value) {
   jspb.Message.setField(this, 2, value);
 };
 
 
 /**
- * optional int64 right_click_count = 3;
+ * optional int64 middle_click_count = 3;
  * @return {number}
  */
-proto.ssigmaapi.type.MouseInput.prototype.getRightClickCount = function() {
+proto.ssigmaapi.type.MouseInput.prototype.getMiddleClickCount = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
 };
 
 
 /** @param {number} value */
-proto.ssigmaapi.type.MouseInput.prototype.setRightClickCount = function(value) {
+proto.ssigmaapi.type.MouseInput.prototype.setMiddleClickCount = function(value) {
   jspb.Message.setField(this, 3, value);
+};
+
+
+/**
+ * optional int64 right_click_count = 4;
+ * @return {number}
+ */
+proto.ssigmaapi.type.MouseInput.prototype.getRightClickCount = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+};
+
+
+/** @param {number} value */
+proto.ssigmaapi.type.MouseInput.prototype.setRightClickCount = function(value) {
+  jspb.Message.setField(this, 4, value);
 };
 
 

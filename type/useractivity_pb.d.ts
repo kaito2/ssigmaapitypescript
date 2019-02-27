@@ -32,6 +32,9 @@ export class UserActivity extends jspb.Message {
     getMouseInput(): MouseInput | undefined;
     setMouseInput(value?: MouseInput): void;
 
+    getSwitchApplicationCount(): number;
+    setSwitchApplicationCount(value: number): void;
+
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): UserActivity.AsObject;
@@ -51,6 +54,7 @@ export namespace UserActivity {
         windowListList: Array<ApplicationWindow.AsObject>,
         userState: UserActivity.UserState,
         mouseInput?: MouseInput.AsObject,
+        switchApplicationCount: number,
     }
 
     export enum UserState {
@@ -82,6 +86,9 @@ export namespace KeyboardInput {
 }
 
 export class MouseInput extends jspb.Message { 
+    getClickCount(): number;
+    setClickCount(value: number): void;
+
     getLeftClickCount(): number;
     setLeftClickCount(value: number): void;
 
@@ -104,6 +111,7 @@ export class MouseInput extends jspb.Message {
 
 export namespace MouseInput {
     export type AsObject = {
+        clickCount: number,
         leftClickCount: number,
         middleClickCount: number,
         rightClickCount: number,
